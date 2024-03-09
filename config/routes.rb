@@ -8,5 +8,7 @@ Rails.application.routes.draw do
   # root "posts#index"
   root to: "home#index"
   resources :users, only: %i[show]
-  resources :rooms
+  resources :rooms do
+    resources :messages
+  end
 end

@@ -1,0 +1,9 @@
+<div class="form-group msg-form">
+  <%= form_with(model: [@individual_room, @message]) do |f| %>
+    <div class="form-group">
+      <%= f.text_field :message_text, autofocus: true, placeholder: 'Type your message....', class: "form-control msg-content" %>
+    </div>
+
+    <%= f.submit 'Send', class: "btn btn-primary mt-2" %>
+  <% end %>
+</div>
