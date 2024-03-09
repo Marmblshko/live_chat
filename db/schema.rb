@@ -28,4 +28,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_09_115119) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  create_table "rooms", force: :cascade do |t|
+    t.string "name"
+    t.boolean "is_private", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
 end
