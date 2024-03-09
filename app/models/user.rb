@@ -4,6 +4,8 @@ class User < ApplicationRecord
 
   validates :username, presence: true, uniqueness: true
 
+  has_many :messages, dependent: :destroy
+
   scope :except_current_user, -> (user) { where.not(id: user) }
 
 end
