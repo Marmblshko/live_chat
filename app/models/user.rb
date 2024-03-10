@@ -8,4 +8,5 @@ class User < ApplicationRecord
 
   scope :except_current_user, -> (user) { where.not(id: user) }
 
+  after_create_commit { broadcast_append_to 'users' }
 end
