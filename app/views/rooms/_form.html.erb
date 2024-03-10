@@ -1,4 +1,4 @@
-<%= form_with(model: @room, class: "form") do |f| %>
+<%= form_with(model: @room, data: { controller: "reset-form", action: "turbo:submit-end->reset-form#reset"}, class: "form") do |f| %>
   <div class="form-group">
     <%= f.label :name %>
     <%= f.text_field :name, class: "form-control" %>
