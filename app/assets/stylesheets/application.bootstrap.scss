@@ -1,2 +1,85 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
+
+body.custom-background {
+  background-color: #e6e6e6; /* Set your desired background color */
+}
+
+.navbar {
+  padding-left: 10px;
+  background-color: #f8f9fa;
+}
+
+.navbar-brand {
+  font-weight: bold;
+  color: #343a40;
+}
+
+.navbar-nav .nav-link {
+  color: #343a40;
+}
+
+.navbar-nav .btn {
+  margin-left: 10px;
+}
+
+.custom-link {
+  color: #3498db;
+  margin-bottom: 2px;
+}
+
+.user_list_item {
+  height: 30px;
+}
+
+.username {
+  overflow: hidden;
+}
+
+.msg-form {
+  width: 100%;
+  height: 56px;
+  padding: 10px;
+}
+
+.msg-content {
+  width: 100%;
+  margin-right: 5px;
+}
+
+.name {
+  margin-top: 2px;
+  padding-bottom: 4px;
+  margin-bottom: 4px;
+}
+.time {
+  padding-top: 0px;
+  margin-top: 0px;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+}
+
+#individual_room {
+  height: calc(90vh - 150px);
+}
+
+#messages {
+  height: calc(90vh - 150px);
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+#room_container {
+  height: 92vh;
+  margin-right: 0px !important;
+}
+
+.message-box {
+  word-wrap: break-word;
+  width: fit-content;
+  max-width: 40%;
+  padding: 5px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  background-color: #555555;
+}

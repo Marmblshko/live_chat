@@ -8,6 +8,18 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
+
+    <style>
+      <%= ".msg-#{current_user&.id}" %> {
+          background-color: #007bff !important;
+          padding: 10px;
+      }
+      <%= ".cont-#{current_user&.id}" %> {
+          display: flex;
+          justify-content: flex-end
+      }
+    </style>
+    <%= render 'layouts/navbar' %>
   </head>
 
   <body class="custom-background">
@@ -20,6 +32,7 @@
       <p class="alert alert-danger"><%= alert %></p>
     <% end %>
   </div>
-    <%= yield %>
+  <%= yield %>
+
   </body>
 </html>
