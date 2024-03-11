@@ -53,4 +53,55 @@ RSpec.describe User, type: :model do
       expect(new_user.errors[:email]).to include('has already been taken')
     end
   end
+
+  describe 'associations' do
+    it 'has many messages with dependent destroy' do
+      user = User.create(username: 'test_name', email: 'test_email@example.com', password: 'qwerty123')
+      room = Room.create(name: '1')
+      message1 = user.messages.create(message_text: 'Test message', room_id: room.id)
+      message2 = user.messages.create(message_text: 'Test message 2', room_id: room.id)
+
+      expect(user.messages).to include(message1, message2)
+      expect { user.destroy }.to change { Message.count }.by(-2)
+    end
+  end
+
+  describe 'scopes' do
+    describe '.except_current_user' do
+      it 'returns users except the specified user' do
+        user = User.create(username: 'test_name', email: 'test_email@example.com', password: 'qwerty123')
+        other_user = User.create(username: 'test_name2', email: 'test_email_2@example.com', password: 'qwerty123')
+        another_user = User.create(username: 'test_name3', email: 'test_email_3@example.com', password: 'qwerty123')
+        users = User.except_current_user(user)
+
+        expect(users).to include(other_user, another_user)
+        expect(users).not_to include(user)
+      end
+
+      it 'returns all users when current user is nil' do
+        user = User.create(username: 'test_name', email: 'test_email@example.com', password: 'qwerty123')
+        users = User.except_current_user(nil)
+
+        expect(users).to include(user)
+      end
+    end
+  end
+
+  describe 'callbacks' do
+    describe 'after_create_commit' do
+      it 'broadcasts user creation to users channel' do
+        user = User.new(username: 'test_name', email: 'test_email@example.com', password: 'qwerty123')
+
+        expect { user.save }.to have_broadcasted_to('users')
+      end
+    end
+  end
+
+  describe '#username' do
+    it 'returns the username as the display name' do
+      user = User.new(username: 'test_name', email: 'test_email@example.com', password: 'qwerty123')
+
+      expect(user.username).to eq('test_name')
+    end
+  end
 end
