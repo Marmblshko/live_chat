@@ -34,7 +34,7 @@ class RoomsController < ApplicationController
   end
 
   def set_room
-    @individual_room = Room.find(params[:id])
+    @individual_room = Room.includes(:messages).find(params[:id])
   end
 
   def set_users

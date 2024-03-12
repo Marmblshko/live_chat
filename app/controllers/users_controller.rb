@@ -15,7 +15,7 @@ class UsersController < ApplicationController
 
   def setup_individual_room
     @room_name = generate_room_name(@user, current_user)
-    @individual_room = find_or_create_private_room([@user, current_user], @room_name)
+    @individual_room = find_or_create_private_room([@user, current_user], @room_name).includes(:messages)
     @messages = @individual_room.messages
   end
 
