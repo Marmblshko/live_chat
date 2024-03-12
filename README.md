@@ -1,24 +1,38 @@
-# README
+# Проект Чата
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Этот проект представляет собой простое веб-приложение чата, разработанное с использованием Ruby on Rails и Stimulus.js.
 
-Things you may want to cover:
+## Описание
 
-* Ruby version
+Проект включает в себя следующие основные компоненты:
 
-* System dependencies
+- `MessagesController`: Контроллер для управления сообщениями, включая создание новых сообщений.
+- `RoomsController`: Контроллер для управления комнатами чата, включая создание новых комнат и отображение сообщений в комнатах.
+- `UsersController`: Контроллер для управления пользователями, отображения их комнат и сообщений.
+- Модели `Message`, `Room`, `User` и `Member`: Модели для управления сообщениями, комнатами и пользователями, а также связей между ними.
+- Классы `ScrollController` и `ResetController`: Контроллеры Stimulus.js для управления прокруткой и сбросом формы чата.
 
-* Configuration
+Также в проекте написаны тесты с использованием RSpec и Cucumber.
 
-* Database creation
+## Установка
 
-* Database initialization
+1. Клонируйте репозиторий: `git clone https://github.com/Marmblshko/live_chat.git`
+2. Перейдите в директорию проекта: `cd live_chat`
+3. Установите зависимости: `bundle install`
+4. Запустите Redis: `redis-server`
+5. Создайте базу данных: `rails db:create`
+6. Выполните миграции: `rails db:migrate`
+7. Запустите сиды для заполнения базы данных тестовыми данными: `rails db:seed`
+8. Запустите сервер: `bin/dev`
 
-* How to run the test suite
+## Использование
 
-* Services (job queues, cache servers, search engines, etc.)
+Чтобы начать использовать приложение, откройте его в браузере по адресу `http://127.0.0.1:3001`.
 
-* Deployment instructions
+## Тестирование
 
-* ...
+Для запуска тестов используйте следующие команды: `bundle exec rspec &&  bundle exec cucumber`.
+
+## Лицензия
+
+[MIT License](LICENSE)
