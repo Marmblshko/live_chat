@@ -1,0 +1,41 @@
+version: '3'
+
+services:
+  postgres:
+    image: 'postgres:13'
+    volumes:
+      - 'postgres:/var/lib/postgresql/data'
+    env_file:
+      - '.env'
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: "trust"
+
+  redis:
+    image: 'redis:7-alpine'
+    command: redis-server
+    ports:
+      - '6379:6379'
+    volumes:
+      - 'redis:/data'
+
+  app:
+    depends_on:
+      postgres:
+        condition: "service_started"
+      redis:
+        condition: "service_started"
+    build:
+      context: .
+    ports:
+      - '3000:3000'
+    volumes:
+      - '.:/live_chat'
+    env_file:
+      - '.env'
+
+volumes:
+  postgres: {}
+  redis: {}
+  app-storage: {}
+  bundle: {}
+  node_modules: {}
