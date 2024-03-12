@@ -8,9 +8,31 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
+
+    <style>
+      <%= ".msg-#{current_user&.id}" %> {
+          background-color: #007bff !important;
+          padding: 10px;
+      }
+      <%= ".cont-#{current_user&.id}" %> {
+          display: flex;
+          justify-content: flex-end
+      }
+    </style>
+    <%= render 'layouts/navbar' %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="custom-background">
+
+  <div data-controller="flash">
+    <% if notice %>
+      <p class="alert alert-success"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+      <p class="alert alert-danger"><%= alert %></p>
+    <% end %>
+  </div>
+  <%= yield %>
+
   </body>
 </html>
