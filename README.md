@@ -19,11 +19,12 @@
 1. Клонируйте репозиторий: `git clone https://github.com/Marmblshko/live_chat.git`
 2. Перейдите в директорию проекта: `cd live_chat`
 3. Установите зависимости: `bundle install`
-4. Запустите Redis: `redis-server`
-5. Создайте базу данных: `rails db:create`
-6. Выполните миграции: `rails db:migrate`
-7. Запустите сиды для заполнения базы данных тестовыми данными: `rails db:seed`
-8. Запустите сервер: `bin/dev`
+4. Установите зависимости для JS и CSS: `bun install`
+5. Запустите Redis: `redis-server`
+6. Создайте базу данных: `rails db:create`
+7. Выполните миграции: `rails db:migrate`
+8. Запустите сиды для заполнения базы данных тестовыми данными: `rails db:seed`
+9. Запустите сервер: `bin/dev`
 
 ## Использование
 
